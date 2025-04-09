@@ -27,3 +27,15 @@ def count_dna_bases(sequence):
             dna_count[letter] += 1
     return dna_count
 
+# Rita graf över frekvenser av DNA-baser
+def plot_dna_frequencies(dna_count, sequence_id):
+    letters = list(dna_count.keys())
+    values = list(dna_count.values())
+    
+    # Skapa stapeldiagram
+    plt.bar(letters, values, color=["blue", "red", "green", "orange"])
+    plt.xlabel("DNA Baser")
+    plt.ylabel("Frekvens")
+    plt.title(f"Frekvens av DNA-baser - {sequence_id}")
+    plt.show()
+
