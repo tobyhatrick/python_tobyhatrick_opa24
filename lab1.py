@@ -1,11 +1,21 @@
-from collections import Counter
+import matplotlib.pyplot as plt
 
-# Läs in filen och bearbeta DNA-sekvenser
-with open("C:/Users/tobyh/Documents/CodingProjects/python_tobyhatrick_opa24/dna_raw.txt", "r") as file:
-    data = file.read().splitlines()
+# Läs in DNA-fil
+def read_dna_file(filename):
+    with open(filename, "r") as file:
+        lines = file.readlines()
+    
+    sequences = {}
+    current_id = ""
+    
+    # Bearbeta varje rad i filen
+    for line in lines:
+        line = line.strip()
+        if line.startswith(">"):  # Identifier
+            current_id = line[1:]
+            sequences[current_id] = ""
+        else:  # DNA-sekvens
+            sequences[current_id] += line.lower()  # Gör sekvensen case-insensitive
+    
+    return sequences
 
-for i in range(0, len(data), 2):  # hoppar över varje två rader (ID och sekvens)
-    seq_id = data[i]
-    sequence = data[i+1].upper()
-    counts = Counter(sequence)
-    print(f"{seq_id}: {dict(counts)}")
