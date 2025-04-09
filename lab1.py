@@ -19,3 +19,11 @@ def read_dna_file(filename):
     
     return sequences
 
+# Räkna baser i DNA-sekvensen
+def count_dna_bases(sequence):
+    dna_count = {"a": 0, "t": 0, "c": 0, "g": 0}
+    for letter in sequence:
+        if letter in dna_count:
+            dna_count[letter] += 1
+    return dna_count
+
