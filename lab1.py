@@ -38,3 +38,18 @@ def plot_dna_frequencies(dna_count, sequence_id):
     plt.ylabel("Frekvens")
     plt.title(f"Frekvens av DNA-baser - {sequence_id}")
     plt.show()
+
+# Huvudfunktion
+def main():
+    filename = "dna_raw.txt"  # Filnamn
+    sequences = read_dna_file(filename)  # Läs in sekvenser från fil
+    
+    # Bearbeta varje sekvens
+    for seq_id, sequence in sequences.items():
+        dna_count = count_dna_bases(sequence)  # Räkna baserna
+        print(f"{seq_id}: {dna_count}")
+        plot_dna_frequencies(dna_count, seq_id)  # Rita graf för varje sekvens
+
+# Kör programmet
+if __name__ == "__main__":
+    main()
